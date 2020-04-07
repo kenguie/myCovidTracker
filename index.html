@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Covid Tracker</title>
+</head>
+<body>
+  <h1>Covid Tracker</h1>
+  <li id="data">
+
+  </li>
+  <script>
+    fetch('https://covidtracking.com/api/v1/states/daily.json')
+      .then((response) => {
+        return response.json();
+      })
+      .then((datas) => {
+        const stateData = datas.filter((data) => {
+          return data.state === 'NY';
+        })
+        console.log(stateData);
+        stateData.forEach((data) => {
+          const node = document.createElement("LI");
+          node.innerHTML = JSON.stringify(data);
+          document.getElementById("data").appendChild(node);
+        })
+      });
+  </script>
+</body>
+</html>
