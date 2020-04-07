@@ -8,17 +8,17 @@
     #data {
       font-size: 24px;
     }
-    li {
-      list-style: none;
+    td {
+      border: 1px solid green;
+      padding: 5px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
   <h1>Covid Tracker</h1>
-  <li id="data">
-    <p>date, state, total, death, deathIncrease</p>
-
-  </li>
+  <table id="data">
+  <table>
   <script>
     fetch('https://covidtracking.com/api/v1/states/daily.json')
       .then((response) => {
@@ -29,10 +29,32 @@
           return data.state === 'NY';
         })
         console.log(stateData);
-        stateData.forEach((data) => {
-          const node = document.createElement("LI");
-          node.innerHTML = `${data.date}, ${data.state}, ${data.total}, ${data.death}, ${data.deathIncrease}`;
-          document.getElementById("data").appendChild(node);
+        const table = document.getElementById("data");
+        const headerRow = table.insertRow(0);
+        const h1 = headerRow.insertCell(0);
+        const h2 = headerRow.insertCell(1);
+        const h3 = headerRow.insertCell(2);
+        const h4 = headerRow.insertCell(3);
+        const h5 = headerRow.insertCell(4);
+        h1.innerHTML = 'date';
+        h2.innerHTML = 'state';
+        h3.innerHTML = 'total';
+        h4.innerHTML = 'death';
+        h5.innerHTML = 'deathIncrease';
+
+        stateData.forEach((data, index) => {
+          const table = document.getElementById("data");
+          const row = table.insertRow(index+1);
+          const c1 = row.insertCell(0);
+          const c2 = row.insertCell(1);
+          const c3 = row.insertCell(2);
+          const c4 = row.insertCell(3);
+          const c5 = row.insertCell(4);
+          c1.innerHTML = data.date;
+          c2.innerHTML = data.state;
+          c3.innerHTML = data.total;
+          c4.innerHTML = data.death;
+          c5.innerHTML = data.deathIncrease;
         })
       });
   </script>
