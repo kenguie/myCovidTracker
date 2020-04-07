@@ -4,10 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Covid Tracker</title>
+  <style>
+    #data {
+      font-size: 24px;
+    }
+  </style>
 </head>
 <body>
   <h1>Covid Tracker</h1>
   <li id="data">
+    <p>date, state, dateChecked, total, deathIncrease, death, deathIncrease</p>
 
   </li>
   <script>
@@ -22,7 +28,7 @@
         console.log(stateData);
         stateData.forEach((data) => {
           const node = document.createElement("LI");
-          node.innerHTML = JSON.stringify(data);
+          node.innerHTML = `${data.date}, ${data.state}, ${data.dateChecked}, ${data.total}, ${data.deathIncrease}, ${data.death}, ${data.deathIncrease}`;
           document.getElementById("data").appendChild(node);
         })
       });
