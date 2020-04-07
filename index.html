@@ -25,7 +25,7 @@
         const stateData = datas.filter((data) => {
           return data.state === 'NY';
         })
-        console.log(stateData);
+        // console.log(stateData);
         stateData.forEach((data) => {
           const node = document.createElement("LI");
           node.innerHTML = `${data.date}, ${data.state}, ${data.dateChecked}, ${data.total}, ${data.deathIncrease}, ${data.death}, ${data.deathIncrease}`;
