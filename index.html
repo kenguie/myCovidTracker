@@ -13,20 +13,103 @@
       padding: 5px;
       text-align: center;
     }
+    .button {
+      margin: 15px 10px 15px 10px;
+      display: inline-block;
+      padding: 15px;
+      border: 1px solid green;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <h1>Covid Tracker</h1>
+  <h2>Data provided by The Covid Data Project</h2>
+  <h4>https://covidtracking.com/api</h4>
+
+  <div id='NY' class='button'>
+    NY
+  </div>
+  <div id='NJ' class='button'>
+    NJ
+  </div>
+  <div id='IL' class='button'>
+    IL
+  </div>
+  <div id='CA' class='button'>
+    CA
+  </div>
+  <div id='FL' class='button'>
+    FL
+  </div>
+  <div id='IN' class='button'>
+    IN
+  </div>
+  <div id='HI' class='button'>
+    HI
+  </div>
   <table id="data">
   <table>
   <script>
-    fetch('https://covidtracking.com/api/v1/states/daily.json')
+    let theState = '';
+    document.getElementById('NY').addEventListener('click', 
+      function assignState() {
+        theState = 'NY';
+        console.log(theState)
+        fetchData(theState);
+      }
+    );
+    document.getElementById('NJ').addEventListener('click', 
+      function assignState() {
+        theState = 'NJ';
+        console.log(theState)
+        fetchData(theState);
+      }
+    );
+    document.getElementById('IL').addEventListener('click', 
+      function assignState() {
+        theState = 'IL';
+        console.log(theState)
+        fetchData(theState);
+      }
+    );
+    document.getElementById('CA').addEventListener('click', 
+      function assignState() {
+        theState = 'CA';
+        console.log(theState)
+        fetchData(theState);
+      }
+    );
+    document.getElementById('FL').addEventListener('click', 
+      function assignState() {
+        theState = 'FL';
+        console.log(theState)
+        fetchData(theState);
+      }
+    );
+    document.getElementById('IN').addEventListener('click', 
+      function assignState() {
+        theState = 'IN';
+        console.log(theState)
+        fetchData(theState);
+      }
+    );
+    document.getElementById('HI').addEventListener('click', 
+      function assignState() {
+        theState = 'HI';
+        console.log(theState)
+        fetchData(theState);
+      }
+    );
+
+    function fetchData(theState) {
+      fetch('https://covidtracking.com/api/v1/states/daily.json')
       .then((response) => {
         return response.json();
       })
       .then((datas) => {
         const stateData = datas.filter((data) => {
-          return data.state === 'NY';
+          return data.state === theState;
         })
         console.log(stateData);
         const table = document.getElementById("data");
@@ -65,6 +148,7 @@
           c7.innerHTML = data.deathIncrease;
         })
       });
+    }
   </script>
 </body>
 </html>
