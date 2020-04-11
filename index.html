@@ -45,6 +45,9 @@
   <div id='IN' class='button'>
     IN
   </div>
+  <div id='TX' class='button'>
+    TX
+  </div>
   <div id='HI' class='button'>
     HI
   </div>
@@ -90,6 +93,13 @@
     document.getElementById('IN').addEventListener('click', 
       function assignState() {
         theState = 'IN';
+        console.log(theState)
+        fetchData(theState);
+      }
+    );
+    document.getElementById('TX').addEventListener('click', 
+      function assignState() {
+        theState = 'TX';
         console.log(theState)
         fetchData(theState);
       }
