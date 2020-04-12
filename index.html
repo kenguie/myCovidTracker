@@ -149,14 +149,12 @@
         const h4 = headerRow.insertCell(3);
         const h5 = headerRow.insertCell(4);
         const h6 = headerRow.insertCell(5);
-        const h7 = headerRow.insertCell(6);
         h1.innerHTML = 'date';
         h2.innerHTML = 'state';
-        h3.innerHTML = 'total';
-        h4.innerHTML = 'hospitalizedCurrently';
-        h5.innerHTML = 'hospitalizedIncrease';
-        h6.innerHTML = 'death';
-        h7.innerHTML = 'deathIncrease';
+        h3.innerHTML = 'hospitalizedCurrently';
+        h4.innerHTML = 'hospitalizedIncrease';
+        h5.innerHTML = 'death';
+        h6.innerHTML = 'deathIncrease';
 
         stateData.forEach((data, index) => {
           const table = document.getElementById("data");
@@ -167,14 +165,12 @@
           const c4 = row.insertCell(3);
           const c5 = row.insertCell(4);
           const c6 = row.insertCell(5);
-          const c7 = row.insertCell(6);
           c1.innerHTML = data.date;
           c2.innerHTML = data.state;
-          c3.innerHTML = data.total;
-          c4.innerHTML = data.hospitalizedCurrently;
-          c5.innerHTML = data.hospitalizedIncrease;
-          c6.innerHTML = data.death;
-          c7.innerHTML = data.deathIncrease;
+          c3.innerHTML = data.hospitalizedCurrently;
+          c4.innerHTML = data.hospitalizedIncrease;
+          c5.innerHTML = data.death;
+          c6.innerHTML = data.deathIncrease;
         })
       });
     }
