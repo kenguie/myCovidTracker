@@ -77,56 +77,48 @@
     document.getElementById('NY').addEventListener('click', 
       function assignState() {
         theState = 'NY';
-        console.log(theState)
         fetchData(theState);
       }
     );
     document.getElementById('NJ').addEventListener('click', 
       function assignState() {
         theState = 'NJ';
-        console.log(theState)
         fetchData(theState);
       }
     );
     document.getElementById('IL').addEventListener('click', 
       function assignState() {
         theState = 'IL';
-        console.log(theState)
         fetchData(theState);
       }
     );
     document.getElementById('CA').addEventListener('click', 
       function assignState() {
         theState = 'CA';
-        console.log(theState)
         fetchData(theState);
       }
     );
     document.getElementById('FL').addEventListener('click', 
       function assignState() {
         theState = 'FL';
-        console.log(theState)
         fetchData(theState);
       }
     );
     document.getElementById('IN').addEventListener('click', 
       function assignState() {
         theState = 'IN';
-        console.log(theState)
         fetchData(theState);
       }
     );
     document.getElementById('TX').addEventListener('click', 
       function assignState() {
         theState = 'TX';
-        console.log(theState)
         fetchData(theState);
       }
     );
     document.getElementById('HI').addEventListener('click', 
       function assignState() {
         theState = 'HI';
-        console.log(theState)
         fetchData(theState);
       }
     );
@@ -142,6 +134,7 @@
         })
         console.log(stateData);
         const table = document.getElementById("data");
+        table.innerHTML = '';
         const headerRow = table.insertRow(0);
         const h1 = headerRow.insertCell(0);
         const h2 = headerRow.insertCell(1);
