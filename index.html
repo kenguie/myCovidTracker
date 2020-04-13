@@ -11,10 +11,16 @@
     gtag('js', new Date());
     gtag('config', 'G-ZEGXXZQXN2');
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
   <title>Covid Tracker</title>
   <style>
     * {
       background-color: aliceblue;
+    }
+    #chart {
+      display: block !important;
+      height: 800px !important;
+      width: 1000px !important;
     }
     #data {
       font-size: 24px;
@@ -40,6 +46,8 @@
   <h1>Covid Tracker</h1>
   <h2>Data provided by The Covid Data Project</h2>
   <h4><a href="https://covidtracking.com/api" target="_blank">https://covidtracking.com/api</a></h4>
+
+  <canvas id="chart"></canvas>
 
   <div id='NY' class='button'>
     NY
@@ -72,6 +80,8 @@
     <h3><a href="https://www.kenguie.com" target="_blank">Who's Ken G?</a></h3>
   </div>
   <script>
+    let labels = [];
+    let dataHospitalized = [];
     let theState = 'NY';
     fetchData(theState);
     document.getElementById('NY').addEventListener('click', 
@@ -155,6 +165,9 @@
         h4.innerHTML = 'hospitalizedIncrease';
         h5.innerHTML = 'death';
         h6.innerHTML = 'deathIncrease';
+        
+        labels = [];
+        dataHospitalized = [];
 
         stateData.forEach((data, index) => {
           const table = document.getElementById("data");
@@ -171,7 +184,38 @@
           c4.innerHTML = data.hospitalizedIncrease;
           c5.innerHTML = data.death;
           c6.innerHTML = data.deathIncrease;
+          labels.push(data.date);
+          dataHospitalized.push(data.hospitalizedCurrently);
+          newChart(labels, dataHospitalized);
         })
+      });
+    }
+
+    function newChart(labels, dataHospitalized) {
+      const ctx = document.getElementById('chart').getContext('2d');
+      const chart = new Chart(ctx, {
+          type: 'bar',
+          data: {
+              labels: labels,
+              datasets: [{
+                  label: 'Covid - Hospitalized',
+                  data: dataHospitalized,
+                  backgroundColor:
+                    'rgba(153, 102, 255, 0.2)',
+                  borderColor:
+                    'rgba(255, 99, 132, 1)',
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  yAxes: [{
+                      ticks: {
+                          beginAtZero: true
+                      }
+                  }]
+              }
+          }
       });
     }
   </script>
