@@ -71,6 +71,12 @@
   <div id='HI' class='button'>
     HI
   </div>
+  <div id='MA' class='button'>
+    MA
+  </div>
+  <div id='GA' class='button'>
+    GA
+  </div>
   <table id="data">
   <table>
   <canvas id="chart"></canvas>
@@ -128,6 +134,18 @@
     document.getElementById('HI').addEventListener('click', 
       function assignState() {
         theState = 'HI';
+        fetchData(theState);
+      }
+    );
+    document.getElementById('MA').addEventListener('click', 
+      function assignState() {
+        theState = 'MA';
+        fetchData(theState);
+      }
+    );
+    document.getElementById('GA').addEventListener('click', 
+      function assignState() {
+        theState = 'GA';
         fetchData(theState);
       }
     );
