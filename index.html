@@ -77,6 +77,9 @@
   <div id='GA' class='button'>
     GA
   </div>
+  <div id='TN' class='button'>
+    TN
+  </div>
   <table id="data">
   <table>
   <canvas id="chart"></canvas>
@@ -146,6 +149,12 @@
     document.getElementById('GA').addEventListener('click', 
       function assignState() {
         theState = 'GA';
+        fetchData(theState);
+      }
+    );
+    document.getElementById('TN').addEventListener('click', 
+      function assignState() {
+        theState = 'TN';
         fetchData(theState);
       }
     );
