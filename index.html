@@ -45,7 +45,7 @@
 <body>
   <h1>Covid Tracker</h1>
   <h2>Data provided by The Covid Data Project</h2>
-  <h3>Please be patient as all the data comes through, thanks</h3>
+  <h3>Please be patient as all the data comes through, we've got a lot now, thanks.</h3>
   <h4><a href="https://covidtracking.com/api" target="_blank">https://covidtracking.com/api</a></h4>
 
   <div id='NY' class='button'>
@@ -107,6 +107,7 @@
       document.getElementById(state).addEventListener('click', 
         function assignState() {
           theState = state;
+          console.log(`clicked on the state - ${theState}`);
           fetchData(theState);
         }
       );
@@ -124,7 +125,6 @@
         const stateData = datas.filter((data) => {
           return data.state === theState;
         })
-        console.log(stateData);
         const table = document.getElementById("data");
         table.innerHTML = '';
         const headerRow = table.insertRow(0);
@@ -204,7 +204,6 @@
       })
       .then((datas) => {
         const usData = [];
-        console.log(datas);
         datas.forEach((data, index) => {
           labels.push(data.date);
           usData.push(data.hospitalizedCurrently);
