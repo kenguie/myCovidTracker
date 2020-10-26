@@ -47,6 +47,7 @@
   <h2>Data provided by The Covid Data Project</h2>
   <h4><a href="https://covidtracking.com/api" target="_blank">https://covidtracking.com/api</a></h4>
   <h3>Please be patient as all the data comes through, we've got a lot now, thanks.</h3>
+  <h4>We're loading up the last 100 days for now for speed, a full data button will be implemented soon.</h4>
 
   <div id='NY' class='button'>
     NY
@@ -147,20 +148,22 @@
         stateData.forEach((data, index) => {
           const table = document.getElementById("data");
           const row = table.insertRow(index+1);
-          const c1 = row.insertCell(0);
-          const c2 = row.insertCell(1);
-          const c3 = row.insertCell(2);
-          const c4 = row.insertCell(3);
-          const c5 = row.insertCell(4);
-          const c6 = row.insertCell(5);
-          c1.innerHTML = data.date;
-          c2.innerHTML = data.state;
-          c3.innerHTML = data.hospitalizedCurrently;
-          c4.innerHTML = data.hospitalizedIncrease;
-          c5.innerHTML = data.death;
-          c6.innerHTML = data.deathIncrease;
-          labels.push(data.date);
-          dataHospitalized.push(data.hospitalizedCurrently);
+          if (index < 100) {
+            const c1 = row.insertCell(0);
+            const c2 = row.insertCell(1);
+            const c3 = row.insertCell(2);
+            const c4 = row.insertCell(3);
+            const c5 = row.insertCell(4);
+            const c6 = row.insertCell(5);
+            c1.innerHTML = data.date;
+            c2.innerHTML = data.state;
+            c3.innerHTML = data.hospitalizedCurrently;
+            c4.innerHTML = data.hospitalizedIncrease;
+            c5.innerHTML = data.death;
+            c6.innerHTML = data.deathIncrease;
+            labels.push(data.date);
+            dataHospitalized.push(data.hospitalizedCurrently);
+          }
           newChart(labels, dataHospitalized);
         })
       });
